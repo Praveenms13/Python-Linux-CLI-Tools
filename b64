@@ -1,0 +1,23 @@
+#! /bin/python3
+
+print("B64 Utility Tool")
+import base64
+import sys
+
+if(len(sys.argv) != 3 or sys.argv[1] == "-h"):
+    print("Usage: b64 {-e|-d} [-h] <string>")
+    print("Options:")
+    print("\t-e\tEncode string")
+    print("\t-d\tDecode string")
+    print("\t-h\tShow this help")
+    exit(1)
+
+options = sys.argv[1]
+data = sys.argv[2]
+if options == "-d":
+    print(base64.b64decode(data.encode()).decode())
+elif options == "-e":
+    print(base64.b64encode(data.encode()).decode())
+else:
+    print("Usage: b64 {-e|-d} <string>")
+    exit(1)

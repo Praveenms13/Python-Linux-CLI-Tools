@@ -1,0 +1,60 @@
+#! /bin/python3
+
+from optparse import OptionParser
+import psutil
+
+parser = OptionParser()
+parser.add_option(
+    "-n",
+    "--numcpu",
+    action="store_true",
+    dest="numcpu",
+    default=False,
+    help="Print how many CPUs available",
+)
+parser.add_option(
+    "-c",
+    "--cpu",
+    action="store_true",
+    dest="cpu",
+    default=False,
+    help="Prints the CPU Percentage...",
+)
+parser.add_option(
+    "-l",
+    "--load",
+    action="store_true",
+    dest="load",
+    default=False,
+    help="Print how many Load Average...",
+)
+parser.add_option(
+    "-s",
+    "--stream",
+    action="store_true",
+    dest="stream",
+    default=False,
+    help="Continuously stream the values...",
+)
+(options, args) = parser.parse_args()
+# print(options, args)
+
+try:
+    if options.ensure_value("numcpu", False):
+        print("Number of CPUs: ", psutil.cpu_count())
+    if options.ensure_value("load", False):
+        if options.ensure_value("stream", False):
+            while True:
+                print("Load Average: ", psutil.getloadavg(), end="\r")
+        else:
+            print("Load Average: ", psutil.getloadavg())
+        
+    if options.ensure_value("cpu", False):
+        if options.ensure_value("stream", False):
+            while True:
+                print("CPU Percent: ", psutil.cpu_percent(1), end="\r")
+        else:
+            print("CPU Percent: ", psutil.cpu_percent(1))
+except KeyboardInterrupt:
+    print("Exiting...")
+    exit(0)
