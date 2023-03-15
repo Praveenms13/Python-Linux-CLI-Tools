@@ -2,5 +2,27 @@
 
 import sys
 from lib.Arguement import Arguement
+import os
+import json
 
-a = Arguement(sys.argv)
+def printHelp():
+    print("Usage: "+sys.argv[0]+" [track --type=<query>] --file=<filename>")
+
+argsObj = Arguement(sys.argv)
+
+if argsObj.hasOptionValue("--file"):
+    data = json.loads(os.popen("mediainfo --Output=JSON " + argsObj.getOptionValue("--file")).read())
+    # print(json.dumps(data, indent=4))
+    # print("-=-=-=-=-=-=-=-=-=")
+    if argsObj.hasCommand("track") and argsObj.hasOptionValue("--type") :
+        print("Checking for track of type " + argsObj.getOptionValue("--type") + " in " + argsObj.getOptionValue("--file") + "....")
+        for track in data['media']['track']:
+            if track ['@type'] == argsObj.getOptionValue("--type") :
+                print(json.dumps(track, indent=4))
+            else :
+                print("No track of type " + argsObj.getOptionValue("--type"))
+                break
+    else : 
+        print(json.dumps(data, indent=4))
+else:
+    printHelp()
