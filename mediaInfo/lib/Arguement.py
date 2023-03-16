@@ -18,13 +18,35 @@ class Arguement:
                    self.options.append(arg)
             else:
                 self.command.append(arg)
-
+        # ===========================================================================================================================================================
+        # Coding Here is not good, I can make a function to check if the option is there or not and if it is there then I can add it to the list
+        # If I want to integrate all options like help, opt.., etc in oops concept I can keep it here (after parsing args we can check if help is there or not)
+        # to generate help for every options and to autogenerate we can use self.options list and generate help for each option and if h is there na just print help and starts exit
+        # if "-h" in self.options: # or "--help" in self.options:
+        #     print("Help")
+        #     exit(-1)
+        # if "-v" in self.options: # or "--version" in self.options:
+        #     print("Version")
+        #     exit(-1)
+        # if "-o" in self.options: # or "--output" in self.options:
+        #     print("Output")
+        #     exit(-1)
+        # if "-f" in self.options: # or "--file" in self.options:
+        #     print("File")
+        #     exit(-1)
+        # if "-t" in self.options: # or "--type" in self.options:
+        #     print("Type")
+        #     exit(-1)
+        # if "-l" in self.options: # or "--list-keys" in self.options:
+        #     print("List Keys")
+        #     exit(-1)
+        # ===========================================================================================================================================================
         # Check if the command and options are correct
         # print(f"command: {self.command}")
         # print(f"options: {self.options}")
         # print(f"optionValues: {self.optionValues}")
-
     # ------------------------------------------------------------
+    # Commands End 
     # arg.hasOptions(["-l", "-h"])
     def hasOptions(self, options: list):
         userOptions = set(self.options)
