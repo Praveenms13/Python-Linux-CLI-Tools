@@ -51,7 +51,7 @@ class Arguement:
     def hasOptions(self, options: list):
         userOptions = set(self.options)
         requiredOptions = set(options)
-        return list(requiredOptions & userOptions)
+        return len(list(requiredOptions & userOptions)) == len(options)
     
     def hasOption(self, option, default=False):
         if option in self.hasOptions([option]):
