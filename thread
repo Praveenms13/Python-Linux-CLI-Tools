@@ -1,5 +1,11 @@
 #! /usr/bin/python3
+# thread and multiprocess are same but internal works are diff 
+# thread can be used for small scale
+# multiprocess can be used for big scale 
+# fork piping can also be done here 
+# url can be written in pipe
 
+# to learn abt thread safe, GIL, Thread lock
 import threading
 import os
 
@@ -7,6 +13,9 @@ import os
 def downloadFile(url, output):
     # os.system("wget -o {output} {url}".format(url=url, output=output)) # proper way but I can't understand.....
     os.system(f"wget -o {output} {url}")
+    # if fork is done here na then here to start thread and wait  
+    # can write url in pipe
+    # when data is recieved it starts downloading in background
 
 
 if __name__ == "__main__":

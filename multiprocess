@@ -1,5 +1,6 @@
 #! /usr/bin/python3
-
+# multiprocess is intentionally created to work like threading 
+# Sibi MathServer nc 172.20.0.5 3074
 import multiprocessing
 import os
 

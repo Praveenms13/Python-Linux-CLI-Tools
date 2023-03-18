@@ -1,5 +1,5 @@
- #! /usr/bin/python3
-
+#! /usr/bin/python3
+# piping concept
 import os
 import time 
 r, w = os.pipe()
