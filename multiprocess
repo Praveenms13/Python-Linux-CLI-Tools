@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-import threading
+import multiprocessing
 import os
 
 
@@ -13,6 +13,6 @@ if __name__ == "__main__":
     try:
         while True:
             # Creating the new thread........
-            threading.Thread(target=downloadFile, args=(input('Enter url: '), input('Enter Output File name: '))).start()
+            multiprocessing.Process(target=downloadFile, args=(input('Enter url: '), input('Enter Output File name: '))).start()
     except KeyboardInterrupt as e:
         print("Quitting....")
