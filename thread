@@ -1,0 +1,16 @@
+ #! /usr/bin/python3
+
+import os
+import time 
+r, w = os.pipe()
+name = 'Praveen'
+if (os.fork() == 0) :
+    print(f"Child process: {os.getpid()}")
+    while True :
+        time.sleep(0.5) 
+        data = input('Enter the data: ')
+        os.write(w, bytes(data, 'utf-8'))
+else :
+    print(f"Parent process: {os.getpid()}")
+    while True :
+        print('Data Recieved: '+str(os.read(r, 10), 'utf-8'))

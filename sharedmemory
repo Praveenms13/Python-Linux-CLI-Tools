@@ -1,8 +1,9 @@
-# This concept is inherited from c language so it might be difficult to understand for python developers. But it is very useful for python developers to share data between processes. It is very useful for multiprocessing.
+# /usr/bin/python3
 
 from multiprocessing import shared_memory
 from mediaInfo.lib.Arguement import Arguement
 import sys
+# This concept is inherited from c language so it might be difficult to understand for python developers. But it is very useful for python developers to share data between processes. It is very useful for multiprocessing.
 
 args = Arguement(sys.argv)
 
@@ -19,7 +20,7 @@ else:
     shm = shared_memory.SharedMemory(name=args.getOptionValue('--shm'))
     # name is the name of shared memory and it is used to access the shared memory
 
-def writeshmString(shm, data):
+def writeshmString(shm, data):   
     print("Writing to shared memory...")
     buff_a = shm.buf
     buff_a[: len(data)] = bytearray(data, "utf-8")
