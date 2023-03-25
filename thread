@@ -17,7 +17,6 @@ def downloadFile(url, output):
     # can write url in pipe
     # when data is recieved it starts downloading in background
 
-
 if __name__ == "__main__":
     try:
         while True:
