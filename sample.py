@@ -3,9 +3,9 @@ import mysql.connector
 # pip install mysql-connector-python
 cnx = mysql.connector.connect(
     host="mysql.selfmade.ninja",
-    user="",
-    password="",
-    database=""     
+    user="iorProject",
+    password="iorProject",
+    database="iorProject_1"     
 )
 cursor = cnx.cursor()
 def toMySql(dt, pmt_2_5, pmt_10, aqi_2_5, aqi_10):
