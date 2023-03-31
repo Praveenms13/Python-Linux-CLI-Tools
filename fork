@@ -2,8 +2,8 @@
 # piping concept
 # temp
 import os
-# import time 
-# r, w = os.pipe()
+import time 
+r, w = os.pipe()
 if (os.fork() == 0) :
     print(f"Child process: {os.getpid()}")
     while True :
